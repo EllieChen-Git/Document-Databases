@@ -8,7 +8,11 @@
         <p>Bio: {{ this.bio }}</p>
         <p>Gender: {{ this.gender }}</p>
     </div>
-    <a href="/authors/{{this._id}}">Show</a>
+    <a href="/authors/{{this._id}}">View Author</a>
+    {{!-- {{ In regular http requests, we only have get & post }} --}}
     <a href="/authors/{{this._id}}?_method=DELETE">Delete</a>
-    <hr />
+      {{!-- {{ Change method to delete }} --}}
+      
+      {{!-- <a href="/authors/{{this._id}}?_method=PUT">Edit</a> --}}
+      <a href="/authors/{{this._id}}/edit">Edit</a>
 {{/each}}

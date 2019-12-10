@@ -19,6 +19,6 @@ app.use(methodOverride('_method', { methods: ['POST', 'GET']}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(require("./routes"));
+app.use(require("./routes")); //don't have to change code here. If we require a folder, the file index.js inside that folder will auto run
 
 app.listen(port, () => console.log(`Server is listening on port ${port}`));
