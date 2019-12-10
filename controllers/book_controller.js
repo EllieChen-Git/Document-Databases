@@ -15,14 +15,16 @@ async function index(req, res) {
     res.render("book/index", {books});
 }
 
-function make(req, res) {
+async function make(req, res) {
     //shows the form to create the resource
-    res.render("book/new");
+    let authors = await AuthorModel.find().select("_id name");
+    res.render("book/new", { authors });
 }
 
 async function show(req, res) {
     let { id } = req.params; //find the id
-    let book = await BookModel.findById(id); //find the book
+    let book = await BookModel.findById(id).populate("author");
+    console.log(book);
     res.render("book/show", { book }) //render content
 }
 
