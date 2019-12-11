@@ -1,9 +1,10 @@
 const BookModel = require("./../database/models/book_model");
+const AuthorModel = require('../database/models/author_model');
 
 async function create(req, res) {
     //logic for creating a resource
-    let {name} = req.body;
-    let book = await BookModel.create({ name })
+    let {name, author } = req.body;
+    let book = await BookModel.create({ name, author })
         .catch(err => res.status(500).send(err));
 
     res.redirect("/books");
@@ -24,7 +25,7 @@ async function make(req, res) {
 async function show(req, res) {
     let { id } = req.params; //find the id
     let book = await BookModel.findById(id).populate("author");
-    console.log(book);
+    // console.log(book);
     res.render("book/show", { book }) //render content
 }
 
@@ -46,7 +47,7 @@ async function edit (req, res) {
   // The logic for updating by ID
   async function update (req, res) {
     let { name } = req.body // Destructure name, bio and gender off req.body
-    console.log(req.params)
+    // console.log(req.params)
     let { id } = req.params // Destructure off the id off req.params
     await BookModel.findByIdAndUpdate(id, { name }) // Update the book. Find by the id and then update with the new name, bio and gender
     res.redirect(`/books/${id}`) // Redirect to the show page for book we just updated

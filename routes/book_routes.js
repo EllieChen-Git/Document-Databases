@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const BookController = require("./../controllers/book_controller");
-const CommentController = require("./../controllers/comment_controller");
+const BookController = require("../controllers/book_controller");
+// const CommentController = require("../controllers/comment_controller");
 
 router.get("/", BookController.index);
 
@@ -24,8 +24,5 @@ router.patch("/:id", BookController.update)
 // PUT route to update
 router.put("/:id", BookController.update)
 
-
-// Comment Routes
-router.post("/:bookId/comment", CommentController.create)
 
 module.exports = router;

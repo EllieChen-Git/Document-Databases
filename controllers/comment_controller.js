@@ -7,7 +7,8 @@ async function create(req, res) {
     book.comments.push({ body });
     await book.save();
 
-    res.redirect(`/books/${book._id}`);
+    // res.redirect(`/books/${book._id}`);
+    res.redirect(`/books/${bookId}`);
 }
 
 module.exports = {

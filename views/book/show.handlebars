@@ -1,28 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Book</h1>
-    <p>Name: {{book.name}}</p>
-
-    <form method="POST" action="/books/{{book._id}}/comment"> 
-        <div>
-            <textarea name="body"></textarea>
-        </div>
-        <input type="submit" value="Create Comment" />
-    </form>
-
-
-    {{#each book.comments}}
-        <div>
-            <h4>{{this.created}}</h4>
-            <p>{{this.body}}</p>
-        </div>
-    {{/each}}
-</body>
-</html>
+<h1>book</h1>
+<p>Title: {{book.name}}</p>
+<p>Author: {{{book.author.name}}}<a href="/authors/"></a></p>
+<form method="post" action="/comments/{{book._id}}">
+    <div>
+        <textarea name="body"></textarea>
+    </div>
+    <input type="submit" value="Create Comment" />
+</form>
+{{#each book.comments}}
+<div>
+    <h4>{{this.created}}</h4>
+    <p>{{this.body}}</p>
+    <hr />
+</div>
+{{/each}}
